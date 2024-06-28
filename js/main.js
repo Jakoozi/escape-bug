@@ -59,19 +59,21 @@ function animate(){
 }
 animate();
 
-// window.addEventListener('keydown', function(e){
-//    if(e.code === 'Space') spacePressed = true;
-// }) 
-// window.addEventListener('keyup', function(e){
-//    if(e.code === 'Space') spacePressed = false;
-//    bird.frameX = 0;
-// })
+//Keyboard Event Listener
+window.addEventListener('keydown', function(e){
+   if(e.code === 'Space') spacePressed = true;
+}) 
+window.addEventListener('keyup', function(e){
+   if(e.code === 'Space') spacePressed = false;
+   bird.frameX = 0;
+})
 
-window.addEventListener('mousedown', function(e){
+//Touch screen event listener
+window.addEventListener('touchstart', function(e){
    spacePressed = true;
    console.log("Mouse Pressed")
 }) 
-window.addEventListener('mouseup', function(e){
+window.addEventListener('touchend', function(e){
    spacePressed = false;
    bird.frameX = 0;
    console.log("Mouse Released")

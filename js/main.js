@@ -59,21 +59,23 @@ function animate(){
 }
 animate();
 
-window.addEventListener('keydown', function(e){
-   if(e.code === 'Space') spacePressed = true;
-}) 
-window.addEventListener('keyup', function(e){
-   if(e.code === 'Space') spacePressed = false;
-   bird.frameX = 0;
-})
-
-// window.addEventListener('touchstart', function(e){
-//    spacePressed = true;
+// window.addEventListener('keydown', function(e){
+//    if(e.code === 'Space') spacePressed = true;
 // }) 
-// window.addEventListener('touchend', function(e){
-//    spacePressed = false;
+// window.addEventListener('keyup', function(e){
+//    if(e.code === 'Space') spacePressed = false;
 //    bird.frameX = 0;
 // })
+
+window.addEventListener('mousedown', function(e){
+   spacePressed = true;
+   console.log("Mouse Pressed")
+}) 
+window.addEventListener('mouseup', function(e){
+   spacePressed = false;
+   bird.frameX = 0;
+   console.log("Mouse Released")
+})
 
 const bang = new Image();
 bang.src = './img/bang.png'

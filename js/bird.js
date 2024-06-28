@@ -1,16 +1,28 @@
+const dragonSprite = new Image();
+dragonSprite.src = './img/sprites/dragon.png'
+
+const bugSprite = new Image();
+bugSprite.src = './img/sprites/bug.png'
+
 class Bird {
     constructor(){
         this.x = 150;   //horizontal cordinate on canvas
         this.y = 200;   //vertical cordinate on canvas
         this.vy = 0;    //vertical veolcity
-        this.width = 20;  //bird width
-        this.height = 20;  //bird height
+        this.originalWidth = 268; //Original Sprite Image Width
+        this.originalHeight = 209;  //original sprite image height
+
+        this.width = this.originalWidth/10;  //player width
+        this.height = this.originalHeight/10;  //player height
         this.weight = 1;   //vertical pull on bird. (gravity)
+        this.frameX = 0;
     }
     //this function draws the player
     draw(){
         ctx.fillStyle = 'red';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(bugSprite, this.frameX * this.originalWidth, 0, this.originalWidth, this.originalHeight,
+             this.x -20, this.y -12, this.width *2, this.height *2 );
     }
     //calculates player speed and position per frame
     update(){
@@ -36,6 +48,9 @@ class Bird {
 
     flap(){
         this.vy -= 2; //move up vertically by 2 units.
+        //Flap Animation
+        if (this.frameX >= 3) this.frameX = 0;
+        else if (frame%10 === 0) this.frameX++;
     }
 }
 const bird = new Bird();

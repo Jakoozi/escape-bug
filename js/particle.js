@@ -4,9 +4,9 @@ class Particle {
     constructor(){
         this.x = bird.x; // horizontal cordinate
         this.y = bird.y; // vertical cordinate
-        this.size = (Math.random() * 7) + 3; // from 3 to 10
+        this.size = (Math.random() * 2) + 3; // from 3 to 10
         this.speedY = (Math.random() * 1) - 0.5; // from -0.5 to 0.5
-        this.color = 'hsla(' + hue + ', 100%, 50%, 0.8 )';  //particle color(in hsla).
+        this.color = 'hsla(' + hue + ', 70%, 50%, 0.8 )';  //particle color(in hsla).
     }
     update(){
         this.x -= gamespeed; // particle should move equal, but oposite to bird movement. (away from bird horizontally)

@@ -17,11 +17,32 @@
  gradient.addColorStop('0.6', '#fff');
  gradient.addColorStop('0.6', '#000');
 
+ //endless scrolling Background Image Functionality.
+ const background = new Image();
+background.src = './img/BG2.png';
+const BG = {
+   x1: 0,
+   x2: canvas.width,
+   y: 0,
+   width: canvas.width,
+   height: canvas.height
+}
+function handleBackground(){
+   if(BG.x1 <= -BG.width + gamespeed) BG.x1 = BG.width;
+   else BG.x1 -= gamespeed;
+   if(BG.x2 <= -BG.width + gamespeed) BG.x2 = BG.width;
+   else BG.x2 -= gamespeed;
+   ctx.drawImage(background, BG.x1, BG.y, BG.width, BG.height);
+   ctx.drawImage(background, BG.x2, BG.y, BG.width, BG.height);
+}
+
+
 //this is the OnTick/Frame function. Creates animation effect. It's a recursive method, meaning it calls itself repeatedly, until being stopped by a condition. 
 function animate(){
    ctx.clearRect(0, 0, canvas.width, canvas.height);   //this clears the entire canvas btw every frame of animation
-   handleParticles(); //create particle array
+   handleBackground(); //creates background image 
    handleObstacles();  //create obstacle array
+   handleParticles(); //create particle array
    bird.update();    //update player values
    //Score Text
    ctx.fillStyle = gradient;
@@ -43,10 +64,19 @@ window.addEventListener('keydown', function(e){
 }) 
 window.addEventListener('keyup', function(e){
    if(e.code === 'Space') spacePressed = false;
+   bird.frameX = 0;
 })
 
+// window.addEventListener('touchstart', function(e){
+//    spacePressed = true;
+// }) 
+// window.addEventListener('touchend', function(e){
+//    spacePressed = false;
+//    bird.frameX = 0;
+// })
+
 const bang = new Image();
-bang.src = ''
+bang.src = './img/bang.png'
 
 function handleCollisions(){
    for (let i = 0; i < obstaclesArray.length; i++){
@@ -60,10 +90,12 @@ function handleCollisions(){
             console.log("Bang!!!")
             //Game Over Text.
             ctx.font = "25px Georgia";
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = '#0f0a1a';
             ctx.fillText('Game Over, Your Score is: ' + score, 160, canvas.height/2 -10)
             return true;
 
           }
    }
 }
+
+

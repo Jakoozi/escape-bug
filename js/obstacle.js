@@ -6,8 +6,8 @@ class Obstacle {
         this.top = (Math.random() * canvas.height/3) + 20;    // height of top obstacle(pipes), from 20 to 153.3.
         this.bottom = (Math.random() * canvas.height/3) + 20; // height of bottom obstacle, from 20 to 153.3.
         this.x = canvas.width; // horizontal position of obstalce. right edge of canvas.
-        this.width = 20;      // canvas width.
-        this.color = 'hsla(' + hue + ', 100%, 50%, 1)';  // Obstacle color in hsl color picker.
+        this.width = 40;      // canvas width.
+        this.color = 'hsla(' + hue + ', 50%, 20%, 1)';  // Obstacle color in hsl color picker.
         this.counted = false;
     }
     draw(){
@@ -29,7 +29,7 @@ class Obstacle {
 }
 //this creates new obstacle every 50 frames in the game.
 function handleObstacles(){
-    if (frame%50 === 0){ //sets distance between obstacles
+    if (frame%80 === 0){ //sets distance between obstacles
         obstaclesArray.unshift(new Obstacle); // adds new obstacle to obstacleArray.
     }
     for (let i = 0; i < obstaclesArray.length; i++){

@@ -44,12 +44,12 @@ function handleBackground(){
 function gameStart(){
    setTimeout(animate, 4000);
    ctx.font = '70px Georgia';
-   ctx.strokeText("Get Ready!!", 100, 200);
-   ctx.fillText("Get Ready!!", 100, 200); 
+   ctx.strokeText("Get Ready!!", 150, 200);
+   ctx.fillText("Get Ready!!", 150, 200); 
 
    ctx.font = '30px Georgia';
-   ctx.strokeText("Tap Screen to play!!", 100, 300);
-   ctx.fillText("Tap Screen to play!!", 100, 300);
+   ctx.strokeText("Tap Screen to play!!", 150, 300);
+   ctx.fillText("Tap Screen to play!!", 150, 300);
 }
 gameStart();
 

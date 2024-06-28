@@ -3,13 +3,15 @@
  canvas.width = 600;
  canvas.height = 400;
 
+ const startbnt = document.getElementById("startbtn");
+
  let spacePressed = false; //player controller
  let angle = 0;
  let hue = 0;              //rambow effector.
  let frame = 0;            //each snapshot of the game.
  let score = 0;            //player score
  let gamespeed = 2;        //current game speed.
- let gamestart = false;
+ let gamestart = true;
 
  const gradient = ctx.createLinearGradient(0, 0, 0, 70);
  gradient.addColorStop('0.4', '#fff');
@@ -38,6 +40,19 @@ function handleBackground(){
 }
 
 
+//Game Start
+function gameStart(){
+   setTimeout(animate, 4000);
+   ctx.font = '70px Georgia';
+   ctx.strokeText("Get Ready!!", 100, 200);
+   ctx.fillText("Get Ready!!", 100, 200); 
+
+   ctx.font = '30px Georgia';
+   ctx.strokeText("Tap Screen to play!!", 100, 300);
+   ctx.fillText("Tap Screen to play!!", 100, 300);
+}
+gameStart();
+
 
 
 //this is the OnTick/Frame function. Creates animation effect. It's a recursive method, meaning it calls itself repeatedly, until being stopped by a condition. 
@@ -60,7 +75,6 @@ function animate(){
    hue++;   // color changer
    frame++; // frame counter
 }
-animate();
 
 
 //Keyboard Event Listener

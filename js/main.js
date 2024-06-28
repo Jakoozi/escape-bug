@@ -9,6 +9,7 @@
  let frame = 0;            //each snapshot of the game.
  let score = 0;            //player score
  let gamespeed = 2;        //current game speed.
+ let gamestart = false;
 
  const gradient = ctx.createLinearGradient(0, 0, 0, 70);
  gradient.addColorStop('0.4', '#fff');
@@ -37,6 +38,8 @@ function handleBackground(){
 }
 
 
+
+
 //this is the OnTick/Frame function. Creates animation effect. It's a recursive method, meaning it calls itself repeatedly, until being stopped by a condition. 
 function animate(){
    ctx.clearRect(0, 0, canvas.width, canvas.height);   //this clears the entire canvas btw every frame of animation
@@ -46,9 +49,9 @@ function animate(){
    bird.update();    //update player values
    //Score Text
    ctx.fillStyle = gradient;
-   ctx.font = '90px Georgia';
-   ctx.strokeText(score, 450, 70);
-   ctx.fillText(score, 450, 70); 
+   ctx.font = '70px Georgia';
+   ctx.strokeText(score, 250, 70);
+   ctx.fillText(score, 250, 70); 
 
    handleCollisions();  //handles bird and obstacle collision.
    if (handleCollisions()) return; //break recursion loop.
@@ -58,6 +61,7 @@ function animate(){
    frame++; // frame counter
 }
 animate();
+
 
 //Keyboard Event Listener
 window.addEventListener('keydown', function(e){
